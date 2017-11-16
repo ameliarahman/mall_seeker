@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <title>Facebook Login JavaScript Example</title>
+
+    <title>Mall Seeker</title>
+
     <meta charset="UTF-8">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/fbauth.js"></script>
@@ -14,6 +16,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -28,7 +31,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true"
-    data-auto-logout-link="true" data-use-continue-as="true"></div>
+                            data-auto-logout-link="true" data-use-continue-as="true"></div>
                     </li>
 
                 </ul>
@@ -40,8 +43,8 @@
     <header id="header_detail" class="text-center">
         <div class="inner">
             <h3>Your Current Location</h3>
-            <p>Pondok Indah, Jakarta Selatan</p>
-            <p>-1.9287653, -5675432</p>
+            <p class="latlong">
+            </p>
 
             <label for="radius">Input minimum radius : </label> <br>
             <input type="text" id="radius"> <br>
@@ -55,6 +58,12 @@
         <a href="#" class="list-group-item list-group-item-action">Pondok Indah Mall</a>
     </div>
 
+    <a href="tes.html">
+        Tes
+    </a>
 </body>
+<script src="assets/js/currentLocation.js"></script>
+
+
 
 </html>

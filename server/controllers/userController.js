@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 require('dotenv').config()
 
 
+
 // function checkDatabase(req, res) {
 //   User.findOne({
 //     //find berdasarkan fbid
