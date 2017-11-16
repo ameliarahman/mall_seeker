@@ -1,7 +1,5 @@
 const User = require('../models/userModel');
-require('dotenv').config()
-
-
+const FB = require('fb')
 
 // function checkDatabase(req, res) {
 //   User.findOne({
@@ -44,14 +42,18 @@ require('dotenv').config()
 // }
 
 const addingUser = (req, res) => {
-  let user = new User(req.body)
-  user.save()
-  .then(response => {
-    res.status(200).send(response)
-  })
-  .catch(err=> {
-    res.status(500).send(err)
-  })
+  FB.api('me', { fields: ['id', 'name', 'email', 'location', 'hometown'], access_token: req.headers.token }, 
+  function (res) {
+    console.log(res);
+  });
+  // let user = new User(req.body)
+  // user.save()
+  // .then(response => {
+  //   res.status(200).send(response)
+  // })
+  // .catch(err=> {
+  //   res.status(500).send(err)
+  // })
 }
 
 module.exports = {

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const FB = require('fb')
 const db = process.env.MONGO_URL
 
 mongoose.connection.openUri(db, (err) => {

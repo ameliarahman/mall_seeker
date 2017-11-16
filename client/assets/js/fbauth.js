@@ -4,10 +4,14 @@ function statusChangeCallback(response) {
 
   if (response.status === 'connected') {
     console.log('status change callback ',response);
-    localStorage.setItem('facebook_token', response.authResponse.accessToken)
+    // localStorage.setItem('facebook_token', response.authResponse.accessToken)
     var fbtoken = localStorage.getItem('facebook_token')
     console.log(fbtoken);
-    axios.post('http://localhost:3000/users', fbtoken)
+    axios.post('http://localhost:3000/users',{}, {
+      headers:{
+        token: response.authResponse.accessToken
+      }
+    })
     .then(({data}) => {
       console.log('datanya nih');
       console.log(data)
