@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
-let userSchema = mongoose.Schema({
-  name : String,
-  profilePicture : String,
-  fbid : String
+let userSchema = new Schema({
+  name: String,
+  fbid: String
 })
 
 let userModel = mongoose.model('User', userSchema)

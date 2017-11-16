@@ -6,14 +6,15 @@ function statusChangeCallback(response) {
     console.log('status change callback ',response);
     localStorage.setItem('facebook_token', response.authResponse.accessToken)
     var fbtoken = localStorage.getItem('facebook_token')
-    // axios.post('http://localhost:3000/mall', fbtoken)
-    // .then(({data}) => {
-    //   console.log('datanya nih');
-    //   console.log(data)
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
+    console.log(fbtoken);
+    axios.post('http://localhost:3000/users', fbtoken)
+    .then(({data}) => {
+      console.log('datanya nih');
+      console.log(data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   } else {
     // The person is not logged into your app or we are unable to tell.
     document.getElementById('status').innerHTML = 'Please log ' +
