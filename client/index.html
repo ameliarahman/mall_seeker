@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <title>Facebook Login JavaScript Example</title>
-  <meta charset="UTF-8">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="assets/js/fbauth.js"></script>
-   <meta charset="utf-8">
+    <title>Mall Seeker</title>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/fbauth.js"></script>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -29,7 +29,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true"
-    data-auto-logout-link="true" data-use-continue-as="true"></div>
+                            data-auto-logout-link="true" data-use-continue-as="true"></div>
                     </li>
 
                 </ul>
@@ -41,8 +41,8 @@
     <header id="header_detail" class="text-center">
         <div class="inner">
             <h3>Your Current Location</h3>
-            <p>Pondok Indah, Jakarta Selatan</p>
-            <p>-1.9287653, -5675432</p>
+            <p class="latlong">
+            </p>
 
             <label for="radius">Input minimum radius : </label> <br>
             <input type="text" id="radius"> <br>
@@ -57,5 +57,19 @@
     </div>
 
 </body>
+
+<script>
+    $(document).ready(function () {
+        if ("geolocation" in navigator) { //check geolocation available 
+            //try to get user current location using getCurrentPosition() method
+            navigator.geolocation.getCurrentPosition(function (position) {
+                $(".latlong").html("Lat : " + position.coords.latitude + " </br>Lang :" + position.coords.longitude);
+            });
+        } else {
+            console.log("Browser doesn't support geolocation!");
+        }
+    });
+
+</script>
 
 </html>
