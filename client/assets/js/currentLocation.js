@@ -1,6 +1,5 @@
 function currentUserLocation() {
 
-
     $(document).ready(function () {
         if ("geolocation" in navigator) { //check geolocation available 
             //try to get user current location using getCurrentPosition() method
@@ -12,10 +11,6 @@ function currentUserLocation() {
         }
     });
 }
-
-
-
-
 
 
 

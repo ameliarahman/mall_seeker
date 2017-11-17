@@ -44,9 +44,23 @@ function createMarker(place) {
     $('#namePlace').append(
         `<br> <span class="place">${place.name} </span> </br>`
     )
-    $('span.place').click(function () {
+    $('.place').click(function () {
+        let dataLocation = $(this).text()
         console.log($(this).text())
+        // axios.post('http://localhost:3000/maps', {
+        //     dataLocation: dataLocation
+        // })
+        //     .then(function (response) {
+        //         console.log(response)
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err)
+        //     })
+
+
     })
+
+
 
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
