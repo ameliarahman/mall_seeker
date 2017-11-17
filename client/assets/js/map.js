@@ -44,19 +44,19 @@ function createMarker(place) {
     $('#namePlace').append(
         `<br> <span class="place">${place.name} </span> </br>`
     )
-    $('.place').click(function () {
-        let dataLocation = $(this).text()
-        console.log($(this).text())
-        axios.post('http://localhost:3000/users', {
-            dataLocation: dataLocation
-        })
-            .then(function (response) {
-                console.log(response)
-            })
-            .catch(function (err) {
-                console.log(err)
-            })
-    })
+    // $('.place').click(function () {
+    //     let dataLocation = $(this).text()
+    //     console.log($(this).text())
+    //     axios.post('http://localhost:3000/users', {
+    //         dataLocation: dataLocation
+    //     })
+    //         .then(function (response) {
+    //             console.log(response)
+    //         })
+    //         .catch(function (err) {
+    //             console.log(err)
+    //         })
+    // })
 
 
 
@@ -78,15 +78,17 @@ $(document).ready(function () {
     $(this).on("click", "span", function () {
         let dataLocation = $(this).text()
         console.log($(this).text())
-        // axios.post('http://localhost:3000/maps', {
-        //     dataLocation: dataLocation
-        // })
-        //     .then(function (response) {
-        //         console.log(response)
-        //     })
-        //     .catch(function (err) {
-        //         console.log(err)
-        //     })
+        axios.post('http://localhost:3000/users', {
+            dataLocation: dataLocation
+        })
+            .then(function ({data}) {
+                let locate = JSON.stringify(data)
+                localStorage.setItem('location', locate)
+                console.log(data)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
 
 
 

@@ -29,11 +29,15 @@
   }
 
   function getNearby(lat, long) {
-
-    axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=-6.125554&end_lng=106.8359716&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
-      .then(function (response) {
-        console.log(response);
-        response.data.Routes.forEach(function (route) {
+    let location = localStorage.getItem('location')
+    location = JSON.parse(location)
+    console.log('====================================');
+    console.log(location);
+    console.log('====================================');
+    axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=${location.lat}&end_lng=${location.lng}&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
+      .then(function ({data}) {
+        console.log(data);
+        data.Routes.forEach(function (route) {
           route.RouteSegments.forEach(function (segment) {
             $('.testHasil').append(`
               <div class="stop">

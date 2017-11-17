@@ -1,6 +1,7 @@
 require('dotenv').config()
 const User = require('../models/userModel');
 const FBModel = require('../models/FBModel')
+const MapModel = require('../models/MapModel')
 const jwt = require('jsonwebtoken')
 const jwtkey = process.env.JWT_SECRET
 const geocoder = require('google-geocoder')
@@ -10,10 +11,9 @@ const geo = geocoder({
 })
 
 const getLocation = (req, res) => {
-  geo.find(req.body.dataLocation, (err, res) => {
-    if (err) console.log(err);
-    else console.log(res);
-  })
+  MapModel.getDataLocation(req.body.dataLocation)
+  .then(location => res.status(200).send(location))
+  .catch(err => res.status(500).send(err))
 }
 
 const addingUser = (req, res) => {
