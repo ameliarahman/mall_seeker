@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.map"></script>
 </head>
 
 <body>
@@ -59,15 +60,6 @@
         </div>
     </div>
 
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">Mall Gandaria City</a>
-        <a href="#" class="list-group-item list-group-item-action">Pondok Indah Mall</a>
-    </div>
-    <div id="map">
-
-    </div>
-
-
 </body>
 <script src="assets/js/currentLocation.js"></script>
 <script>
@@ -76,7 +68,7 @@
         if (localStorage.getItem('token')) {
             console.log('lalalallalalala');
             $('#header_detail').show()
-            // location.reload()    
+            // window.location.reload()    
         } else {
             $('#header_detail').hide()
             // location.reload()
