@@ -74,5 +74,23 @@ function createMarker(place) {
 
 }
 
+$(document).ready(function () {
+    $(this).on("click", "span", function () {
+        let dataLocation = $(this).text()
+        console.log($(this).text())
+        // axios.post('http://localhost:3000/maps', {
+        //     dataLocation: dataLocation
+        // })
+        //     .then(function (response) {
+        //         console.log(response)
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err)
+        //     })
 
+
+
+    })
+
+})
 
