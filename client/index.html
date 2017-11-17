@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/fbauth.js"></script>
+    <script src="assets/js/map.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
@@ -48,7 +49,12 @@
 
             <label for="radius">Input minimum radius : </label> <br>
             <input type="text" id="radius"> <br>
-            <button type="button" class="btn btn-default">Search</button>
+            <button type="button" class="btn btn-default" onclick="myFunction()">
+                    <a class="locat" href="tes.html">
+                            Search
+                    </a>
+                
+            </button>
 
         </div>
     </header>
@@ -57,13 +63,13 @@
         <a href="#" class="list-group-item list-group-item-action">Mall Gandaria City</a>
         <a href="#" class="list-group-item list-group-item-action">Pondok Indah Mall</a>
     </div>
+    <div id="map">
 
-    <a href="tes.html">
-        Tes
-    </a>
+    </div>
+
+
 </body>
 <script src="assets/js/currentLocation.js"></script>
-
 
 
 </html>
