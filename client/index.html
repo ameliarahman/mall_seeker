@@ -31,7 +31,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true"
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
                             data-auto-logout-link="true" data-use-continue-as="true"></div>
                     </li>
 
@@ -41,7 +41,7 @@
         </div>
     </nav>
 
-    <header id="header_detail" class="text-center">
+    <div id="header_detail" class="text-center">
         <div class="inner">
             <h3>Your Current Location</h3>
             <p class="latlong">
@@ -57,7 +57,7 @@
             </button>
 
         </div>
-    </header>
+    </div>
 
     <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action">Mall Gandaria City</a>
@@ -70,6 +70,19 @@
 
 </body>
 <script src="assets/js/currentLocation.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log('ululululululululu');
+        if (localStorage.getItem('token')) {
+            console.log('lalalallalalala');
+            $('#header_detail').show()
+            // location.reload()    
+        } else {
+            $('#header_detail').hide()
+            // location.reload()
+        }
+    })
+</script>
 
 
 </html>

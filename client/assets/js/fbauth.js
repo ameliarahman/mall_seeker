@@ -4,9 +4,6 @@ function statusChangeCallback(response) {
 
   if (response.status === 'connected') {
     console.log('status change callback ',response);
-    // localStorage.setItem('facebook_token', response.authResponse.accessToken)
-    // var fbtoken = localStorage.getItem('facebook_token')
-    // console.log(fbtoken);
     axios.post('http://localhost:3000/users',{}, {
       headers:{
         token: response.authResponse.accessToken
@@ -15,14 +12,16 @@ function statusChangeCallback(response) {
     .then(({data}) => {
       console.log('datanya nih');
       console.log(data)
+      localStorage.setItem('token', data)
     })
     .catch(err => {
       console.log(err)
     })
   } else {
-    // The person is not logged into your app or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
+    localStorage.removeItem('token')
+    localStorage.removeItem('locationLat')
+    localStorage.removeItem('locationLong')
+    localStorage.removeItem('locationRad')
   }
 }
 
@@ -36,14 +35,14 @@ function checkLoginState() {
 window.fbAsyncInit = function () {
   FB.init({
     appId: 1625576800795940,
-    cookie: true,  // enable cookies to allow the server to access 
-    xfbml: true,  // parse social plugins on this page
-    version: 'v2.10' // use graph api version 2.8
+    cookie: true, 
+    xfbml: true, 
+    version: 'v2.10' 
   });
 
   FB.getLoginStatus(function (response) {
     statusChangeCallback(response);
-  }, { scope: 'id,name,email,user_location' });
+  }, { scope: 'id,name,email' });
 
 };
 
