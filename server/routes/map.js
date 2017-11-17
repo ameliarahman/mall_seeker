@@ -1,8 +1,8 @@
-// var express = require('express');
-// var router = express.Router();
+var express = require('express');
+var router = express.Router();
 
-// router.post('/', function (req, res) {
-//     console.log(res)
-// })
+router.post('/', function (req, res) {
+    console.log(res)
+})
 
-// module.exports = router;
+module.exports = router;
