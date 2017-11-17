@@ -2,6 +2,9 @@
 <html>
 
 <head>
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -10,8 +13,26 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Mall Seeker</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-  <button onclick="getLocation()">Try It</button>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
+              data-auto-logout-link="true" data-use-continue-as="true"></div>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <button onclick="getLocation()">GET RECOMMENDATION</button>
 
   <div class="testHasil">
   </div>
@@ -35,24 +56,42 @@
     console.log(location);
     console.log('====================================');
     axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=${location.lat}&end_lng=${location.lng}&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
-      .then(function ({data}) {
+      .then(function ({ data }) {
         console.log(data);
         data.Routes.forEach(function (route) {
           route.RouteSegments.forEach(function (segment) {
-            $('.testHasil').append(`
+            if (route.PreferenceLabel === 'RECOMMENDED' && segment.Transport !== null) {
+              $('.testHasil').append(`
               <div class="stop">
-              duration minutes : ${route.DurationMinutes} <br>
-              departure time : ${route.DepartureTime} <br>
-              arrival time : ${route.ArrivalTime} <br>
-              segment : ${segment.RouteSegmentType} <br>
-              duration : ${segment.DurationMinutes} <br>
-              distance : ${segment.WalkDistanceMeters} <br>
-              end point : ${segment.EndPoint.Name}
+              Preference : BY TRANSPORTATION <br>
+              Duration minutes : ${route.DurationMinutes} <br>
+              Departure time : ${route.DepartureTime} <br>
+              Arrival time : ${route.ArrivalTime} <br>
+              Transportation: ${segment.Transport.Name} <br> With direction: ${segment.Transport.Direction}<br>
+              Duration : ${segment.DurationMinutes} <br>
+              End point : ${segment.EndPoint.Name}
               <br>
               <br>
               <br>
               </div>
               `)
+            } else {
+              $('.testHasil').append(`
+              <div class="stop">
+              Preference : WALKING <br>
+              Duration minutes : ${route.DurationMinutes} <br>
+              Departure time : ${route.DepartureTime} <br>
+              Arrival time : ${route.ArrivalTime} <br>
+              Duration : ${segment.DurationMinutes} <br>
+              Walking Distance : ${segment.WalkDistanceMeters} <br>
+              End point : ${segment.EndPoint.Name}
+              <br>
+              <br>
+              <br>
+              </div>
+              `)
+            }
+
           })
         })
       })
