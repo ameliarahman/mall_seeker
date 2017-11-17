@@ -1,8 +1,7 @@
-let radius
-let latlong
+
 function myFunction() {
-    radius = document.getElementById('radius').value
-    latlong = document.getElementsByClassName('latlong')[0].innerText.split(" ")
+    let radius = document.getElementById('radius').value
+    let latlong = document.getElementsByClassName('latlong')[0].innerText.split(" ")
     var rad = radius
     var lat = latlong[0]
     var ln = latlong[1]
@@ -45,21 +44,24 @@ function createMarker(place) {
     $('#namePlace').append(
         `<br> <span class="place">${place.name} </span> </br>`
     )
-    $('span.place').click(function () {
-        var locationName = $(this).text()
-        console.log(locationName)
-        axios.post('http://localhost:3000/maps', locationName)
-        .then(({data}) => {
-            console.log('===========Kalo berhasil============');
-            console.log(data);
-            console.log('====================================');
-        })
-        .catch(err => {
-            console.log('===============KALO GAGAL===========');
-            console.log(err);
-            console.log('====================================');
-        })
+    $('.place').click(function () {
+        let dataLocation = $(this).text()
+        console.log($(this).text())
+        // axios.post('http://localhost:3000/maps', {
+        //     dataLocation: dataLocation
+        // })
+        //     .then(function (response) {
+        //         console.log(response)
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err)
+        //     })
+
+
+
     })
+
+
 
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({

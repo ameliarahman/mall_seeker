@@ -25,11 +25,7 @@
                 <a class="navbar-brand" href="index.html">Mall Seeker</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Profile<span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
@@ -60,6 +56,29 @@
         </div>
     </div>
 
+    <div id="map">
+
+    </div>
+
 </body>
 <script src="assets/js/currentLocation.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log(localStorage.getItem('token'))
+        console.log('ululululululululu');
+        if (localStorage.getItem('token') !== null) {
+            console.log('lalalallalalala');
+            //  setTimeout(2000)
+            $('#header_detail').show()
+
+            // location.reload()    
+        } else {
+            // setTimeout(2000)
+            $('#header_detail').hide()
+
+            // location.reload()
+        }
+    })
+
+</script>
 </html>

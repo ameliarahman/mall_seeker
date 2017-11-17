@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    
-    <button onclick="getLocation()">Try It</button>
-    
-    <div class="testHasil">
-    </div>
-  </body>
-  <script>
-  
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <button onclick="getLocation()">Try It</button>
+
+  <div class="testHasil">
+  </div>
+</body>
+<script>
   function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-          // x.innerHTML = "Geolocation is not supported by this browser.";
-      }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
   }
   function showPosition(position) {
     getNearby(position.coords.latitude, position.coords.longitude)
-      // x.innerHTML = "Latitude: " + position.coords.latitude +
-      // "<br>Longitude: " + position.coords.longitude;
+    // x.innerHTML = "Latitude: " + position.coords.latitude +
+    // "<br>Longitude: " + position.coords.longitude;
   }
-  
+
   function getNearby(lat, long) {
-    
-      axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=-6.125554&end_lng=106.8359716&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
+
+    axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=-6.125554&end_lng=106.8359716&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
       .then(function (response) {
         console.log(response);
         response.data.Routes.forEach(function (route) {
@@ -55,6 +55,8 @@
       .catch(function (error) {
         console.log(error)
       })
-    }
-  </script>
+  }
+
+</script>
+
 </html>

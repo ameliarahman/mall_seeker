@@ -3,6 +3,8 @@ function statusChangeCallback(response) {
   console.log(response);
 
   if (response.status === 'connected') {
+
+    console.log('status change callback ',response);
     axios.post('http://localhost:3000/users',{}, {
       headers:{
         token: response.authResponse.accessToken
