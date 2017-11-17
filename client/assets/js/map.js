@@ -1,8 +1,7 @@
-let radius
-let latlong
+
 function myFunction() {
-    radius = document.getElementById('radius').value
-    latlong = document.getElementsByClassName('latlong')[0].innerText.split(" ")
+    let radius = document.getElementById('radius').value
+    let latlong = document.getElementsByClassName('latlong')[0].innerText.split(" ")
     var rad = radius
     var lat = latlong[0]
     var ln = latlong[1]
