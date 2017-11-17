@@ -1,5 +1,8 @@
+require('dotenv').config()
 const User = require('../models/userModel');
 const FBModel = require('../models/FBModel')
+const jwt = require('jsonwebtoken')
+const key = process.env.JWT_SECRET
 
 
 const addingUser = (req, res) => {
@@ -13,7 +16,14 @@ const addingUser = (req, res) => {
     })
     user.save()
     .then(newUser => {
-      res.status(200).send(newUser)
+      var accessToken = jwt.sign({
+        _id: newUser._id,
+        fbid: newUser.fbid,
+        name: newUser.name,
+        email: newUser.email
+      }, key)
+      console.log('data lemparan ', accessToken);
+      res.status(200).send(accessToken)
     })
   })
   .catch(err => {
