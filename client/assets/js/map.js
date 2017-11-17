@@ -14,7 +14,6 @@ function initMap() {
     let rad = localStorage.getItem('locationRad')
     let latitude = Number(localStorage.getItem('locationLat'))
     let longitude = Number(localStorage.getItem('locationLong'))
-    //console.log(rad, "tesssssssssss", typeof (latitude), typeof (longitude))
 
     var pyrmont = { lat: latitude, lng: longitude };
 
@@ -44,21 +43,6 @@ function createMarker(place) {
     $('#namePlace').append(
         `<br> <span class="place">${place.name} </span> </br>`
     )
-    // $('.place').click(function () {
-    //     let dataLocation = $(this).text()
-    //     console.log($(this).text())
-    //     axios.post('http://localhost:3000/users', {
-    //         dataLocation: dataLocation
-    //     })
-    //         .then(function (response) {
-    //             console.log(response)
-    //         })
-    //         .catch(function (err) {
-    //             console.log(err)
-    //         })
-    // })
-
-
 
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
@@ -69,9 +53,7 @@ function createMarker(place) {
     google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
-
     });
-
 }
 
 $(document).ready(function () {
@@ -81,18 +63,13 @@ $(document).ready(function () {
         axios.post('http://localhost:3000/users', {
             dataLocation: dataLocation
         })
-            .then(function ({data}) {
-                let locate = JSON.stringify(data)
-                localStorage.setItem('location', locate)
-                console.log(data)
-            })
-            .catch(function (err) {
-                console.log(err)
-            })
-
-
-
+        .then(function ({data}) {
+            let locate = JSON.stringify(data)
+            localStorage.setItem('location', locate)
+            console.log(locate)
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
     })
-
 })
-

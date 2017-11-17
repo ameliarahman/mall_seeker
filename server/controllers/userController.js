@@ -12,8 +12,14 @@ const geo = geocoder({
 
 const getLocation = (req, res) => {
   MapModel.getDataLocation(req.body.dataLocation)
-  .then(location => res.status(200).send(location))
-  .catch(err => res.status(500).send(err))
+  .then(location =>{
+    console.log('Ini sukses ambil lokasi');
+    res.status(200).send(location)
+  })
+  .catch(err => {
+    console.log('gagal dapaeet lokasi')
+    res.status(500).send(err)
+  })
 }
 
 const addingUser = (req, res) => {
