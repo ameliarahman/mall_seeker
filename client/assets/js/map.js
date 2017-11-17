@@ -46,7 +46,19 @@ function createMarker(place) {
         `<br> <span class="place">${place.name} </span> </br>`
     )
     $('span.place').click(function () {
-        console.log($(this).text())
+        var locationName = $(this).text()
+        console.log(locationName)
+        axios.post('http://localhost:3000/maps', locationName)
+        .then(({data}) => {
+            console.log('===========Kalo berhasil============');
+            console.log(data);
+            console.log('====================================');
+        })
+        .catch(err => {
+            console.log('===============KALO GAGAL===========');
+            console.log(err);
+            console.log('====================================');
+        })
     })
 
     var placeLoc = place.geometry.location;
