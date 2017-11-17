@@ -35,7 +35,7 @@
     console.log(location);
     console.log('====================================');
     axios.get(`http://api-ext.trafi.com/routes?start_lat=${lat}&start_lng=${long}&end_lat=${location.lat}&end_lng=${location.lng}&is_arrival=false&api_key=b2fa03d2ac1f2f0e60bc39432760504a`)
-      .then(function ({data}) {
+      .then(function ({ data }) {
         console.log(data);
         data.Routes.forEach(function (route) {
           route.RouteSegments.forEach(function (segment) {
