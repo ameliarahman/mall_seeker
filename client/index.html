@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Mall Seeker</title>
+
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/fbauth.js"></script>
+    <script src="assets/js/map.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.map"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Mall Seeker</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false"
+                            data-auto-logout-link="true" data-use-continue-as="true"></div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="header_detail" class="text-center">
+        <div class="inner">
+            <h3>Your Current Location</h3>
+            <p class="latlong">
+            </p>
+
+            <label for="radius">Input minimum radius : </label> <br>
+            <input type="text" id="radius"> <br>
+            <button type="button" class="btn btn-default" onclick="myFunction()">
+                    <a class="locat" href="tes.html">
+                            Search
+                    </a>
+                
+            </button>
+
+        </div>
+    </div>
+
+    <div id="map">
+
+    </div>
+
+</body>
+<script src="assets/js/currentLocation.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log(localStorage.getItem('token'))
+        console.log('ululululululululu');
+        if (localStorage.getItem('token') !== null) {
+            console.log('lalalallalalala');
+            //  setTimeout(2000)
+            $('#header_detail').show()
+
+            // location.reload()    
+        } else {
+            // setTimeout(2000)
+            $('#header_detail').hide()
+
+            // location.reload()
+        }
+    })
+
+</script>
+</html>
