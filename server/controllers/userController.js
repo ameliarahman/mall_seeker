@@ -2,8 +2,19 @@ require('dotenv').config()
 const User = require('../models/userModel');
 const FBModel = require('../models/FBModel')
 const jwt = require('jsonwebtoken')
-const key = process.env.JWT_SECRET
+const jwtkey = process.env.JWT_SECRET
+const geocoder = require('google-geocoder')
 
+const geo = geocoder({
+  key: 'AIzaSyCWiag2zBCoyKhfGVVlqCA0qz7X761wXek'
+})
+
+const getLocation = (req, res) => {
+  geo.find(req.body.dataLocation, (err, res) => {
+    if (err) console.log(err);
+    else console.log(res);
+  })
+}
 
 const addingUser = (req, res) => {
   FBModel.getData(req.headers.token)
@@ -21,7 +32,7 @@ const addingUser = (req, res) => {
             fbid: newUser.fbid,
             name: newUser.name,
             email: newUser.email
-          }, key)
+          }, jwtkey)
           console.log('data lemparan ', accessToken);
           res.status(200).send(accessToken)
         })
@@ -33,5 +44,6 @@ const addingUser = (req, res) => {
 }
 
 module.exports = {
+  getLocation,
   addingUser
 };
