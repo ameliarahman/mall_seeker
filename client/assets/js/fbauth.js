@@ -3,7 +3,6 @@ function statusChangeCallback(response) {
   console.log(response);
 
   if (response.status === 'connected') {
-    console.log('status change callback ',response);
     axios.post('http://localhost:3000/users',{}, {
       headers:{
         token: response.authResponse.accessToken
@@ -13,6 +12,9 @@ function statusChangeCallback(response) {
       console.log('datanya nih');
       console.log(data)
       localStorage.setItem('token', data)
+      setTimeout(() => {
+        $('#header_detail').show()
+      }, 1000);
     })
     .catch(err => {
       console.log(err)
@@ -22,6 +24,9 @@ function statusChangeCallback(response) {
     localStorage.removeItem('locationLat')
     localStorage.removeItem('locationLong')
     localStorage.removeItem('locationRad')
+    setTimeout(() => {
+      $('#header_detail').hide()
+    }, 1000);
   }
 }
 
