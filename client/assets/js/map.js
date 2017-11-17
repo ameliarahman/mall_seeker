@@ -41,7 +41,7 @@ function callback(results, status) {
 
 function createMarker(place) {
     $('#namePlace').append(
-        `<br> <span class="place">${place.name} </span> </br>`
+        `<br> <span class="place"><a href="trafi.html"> ${place.name} <a></span> </br>`
     )
 
     var placeLoc = place.geometry.location;
@@ -49,7 +49,6 @@ function createMarker(place) {
         map: map,
         position: place.geometry.location
     });
-
     google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
@@ -63,7 +62,7 @@ $(document).ready(function () {
         axios.post('http://localhost:3000/users', {
             dataLocation: dataLocation
         })
-        .then(function ({data}) {
+        .then(function ({ data }) {
             let locate = JSON.stringify(data)
             localStorage.setItem('location', locate)
             console.log(locate)

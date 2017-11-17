@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.map"></script>
@@ -19,7 +20,7 @@
 
 <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html">Mall Seeker</a>
@@ -59,26 +60,9 @@
     <div id="map">
 
     </div>
-
 </body>
 <script src="assets/js/currentLocation.js"></script>
 <script>
-    $(document).ready(function () {
-        console.log(localStorage.getItem('token'))
-        console.log('ululululululululu');
-        if (localStorage.getItem('token') !== null) {
-            console.log('lalalallalalala');
-            //  setTimeout(2000)
-            $('#header_detail').show()
-
-            // location.reload()    
-        } else {
-            // setTimeout(2000)
-            $('#header_detail').hide()
-
-            // location.reload()
-        }
-    })
-
 </script>
+
 </html>
